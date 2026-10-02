@@ -1,6 +1,64 @@
-.container { max-width: 500px; margin: 40px auto; font-family: sans-serif; }
-form { display: flex; gap: 8px; margin-bottom: 20px; }
-form input { flex: 1; padding: 8px; }
-li { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #eee; list-style: none; }
-li span { flex: 1; }
-.done { text-decoration: line-through; color: gray; }
+:root {
+  --blush: #ffdae6;
+  --blush-light: #fff7fa;
+  --pink-soft: #fde4ec;
+  --pink: #f4a6c0;
+  --rose: #c2185b;
+  --burgundy: #771531;
+  --burgundy-deep: #4f0025;
+  --text: #3a2a30;
+  --muted: #9a7f88;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--blush), var(--blush-light));
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 16px;
+  box-sizing: border-box;
+}
+
+#root { width: 100%; display: flex; justify-content: center; }
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(119, 21, 49, 0.18);
+}
+
+h1 { margin: 0; color: var(--burgundy-deep); }
+.subtitle { color: var(--muted); margin: 4px 0 14px; }
+
+.progress { height: 8px; background: var(--pink-soft); border-radius: 10px; overflow: hidden; margin-bottom: 18px; }
+.progress-bar { height: 100%; background: linear-gradient(90deg, var(--pink), var(--burgundy)); transition: width 0.4s; }
+
+form { display: flex; gap: 8px; margin-bottom: 14px; }
+form input { flex: 1; padding: 12px 14px; border: 2px solid var(--pink-soft); border-radius: 12px; font-size: 15px; outline: none; color: var(--text); }
+form input:focus { border-color: var(--burgundy); }
+form button { width: 46px; border: none; border-radius: 12px; background: var(--burgundy); color: #fff; font-size: 24px; cursor: pointer; transition: background 0.2s; }
+form button:hover { background: var(--burgundy-deep); }
+
+.filters { display: flex; gap: 8px; margin-bottom: 10px; }
+.filters button { flex: 1; padding: 6px; border: none; border-radius: 20px; background: var(--pink-soft); color: var(--burgundy); cursor: pointer; text-transform: capitalize; }
+.filters button.active { background: var(--burgundy); color: #fff; }
+
+ul { padding: 0; margin: 0; }
+li { display: flex; align-items: center; gap: 12px; padding: 12px 8px; border-bottom: 1px solid var(--pink-soft); list-style: none; animation: pop 0.25s ease; }
+li input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--burgundy); cursor: pointer; }
+li span { flex: 1; color: var(--text); cursor: pointer; }
+li span.done { text-decoration: line-through; color: var(--pink); }
+.edit-input { flex: 1; padding: 6px; border: 2px solid var(--burgundy); border-radius: 8px; outline: none; }
+
+.delete { border: none; background: none; color: var(--pink); font-size: 16px; cursor: pointer; }
+li:hover .delete { color: var(--rose); }
+
+.empty { text-align: center; color: var(--muted); margin: 20px 0 0; }
+.hint { text-align: center; color: var(--pink); font-size: 12px; margin: 14px 0 0; }
+
+@keyframes pop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
